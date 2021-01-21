@@ -16,10 +16,10 @@ class AuthController extends Controller
 
         Auth::return([
             'nome' => $request->nome,
-            'sexo' => $request->custo,
+            'sexo' => $request->sexo,
         ]);
 
-        return "vc conseguiu";
+        return view(['nome' => $request->nome]);
 
     }
 }
