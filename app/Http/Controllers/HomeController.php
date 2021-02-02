@@ -25,4 +25,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function formNew()
+    {
+        $view = view('nova-page')->with([
+            'nome' => 'Guilherme'
+        ])->render();
+
+        return response()->json(['view' => $view]);
+    }
 }
