@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,24 +14,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/admin', 'App\Http\Controllers\AuthController@dashboard')->name('admin');
-Route::get('/admin/login', 'App\Http\Controllers\AuthController@ShowLoginForm')->name('admin.login'); 
-
-Route::get('teste', 'App\Http\Controllers\teste@gui')->name('teste');
 
 
+    //aqui é um grupo de rotas grupo home tudo o que tera na home
+    Route::prefix('/home')->name('home.')->group(function () {
+        //as rotas que estarão dentro da home
+        Route::get('/index', [HomeController::class, 'index'])->name('index');
+        Route::post('/open-page', [HomeController::class, 'openPage'])->name('open_page');
+        Route::post('/register-product', [HomeController::class, 'registerProduct'])->name('register_product');
+    });
 
-
-
-//App\Http\Controllers\
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

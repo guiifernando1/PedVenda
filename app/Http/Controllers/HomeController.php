@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,16 +22,31 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   
+        $user = 'Brow';
+        return view('pedvenda.home.index')
+        ->with([
+            'name_user' => $user, 
+        ]);
     }
 
-    public function formNew()
+    public function openPage(Request $request)
     {
-        $view = view('nova-page')->with([
-            'nome' => 'Guilherme'
-        ])->render();
-
-        return response()->json(['view' => $view]);
+        //dd($request->all()); // quando vc quer verificar se o que venho por ajax venho mesmo
+        $products = array(
+            'potatos',
+            'apple',
+            'banana'
+        );
+        return view('pedvenda.home.register')
+        ->with([
+            'products' => $products, 
+        ]);
     }
+
+    public function registerProduct(Request $request)
+    {
+        dd($request->all());
+    }
+
 }
