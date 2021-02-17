@@ -17,9 +17,9 @@ use App\Http\Controllers\HomeController;
 
 
     //aqui é um grupo de rotas grupo home tudo o que tera na home
-    Route::prefix('/home')->name('home.')->group(function () {
+    Route::prefix('/')->name('home.')->group(function () {
         //as rotas que estarão dentro da home
-        Route::get('/index', [HomeController::class, 'index'])->name('index');
+        Route::get('/teste', [HomeController::class, 'index'])->name('teste');
         Route::post('/open-page', [HomeController::class, 'openPage'])->name('open_page');
         Route::post('/register-product', [HomeController::class, 'registerProduct'])->name('register_product');
     });
